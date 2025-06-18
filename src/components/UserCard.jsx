@@ -1,6 +1,5 @@
 
 import { Link } from "react-router-dom";
-import { User } from "../data/mockUsers";
 import { Edit, Eye, Trash2, Mail, Phone, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,12 +14,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-interface UserCardProps {
-  user: User;
-  onDelete: (id: string) => void;
-}
-
-const UserCard = ({ user, onDelete }: UserCardProps) => {
+const UserCard = ({ user, onDelete }) => {
   const handleDelete = () => {
     onDelete(user.id);
   };

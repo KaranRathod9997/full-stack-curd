@@ -1,10 +1,10 @@
 
 import { useState, useEffect } from 'react';
-import { User, mockUsers } from '../data/mockUsers';
+import { mockUsers } from '../data/mockUsers';
 import { toast } from 'sonner';
 
 export const useUsers = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,8 +15,8 @@ export const useUsers = () => {
     }, 500);
   }, []);
 
-  const addUser = (newUser: Omit<User, 'id'>) => {
-    const user: User = {
+  const addUser = (newUser) => {
+    const user = {
       ...newUser,
       id: Date.now().toString(),
     };
@@ -25,19 +25,19 @@ export const useUsers = () => {
     return user;
   };
 
-  const updateUser = (id: string, updatedUser: Omit<User, 'id'>) => {
+  const updateUser = (id, updatedUser) => {
     setUsers(prev => prev.map(user => 
       user.id === id ? { ...updatedUser, id } : user
     ));
     toast.success('User updated successfully!');
   };
 
-  const deleteUser = (id: string) => {
+  const deleteUser = (id) => {
     setUsers(prev => prev.filter(user => user.id !== id));
     toast.success('User deleted successfully!');
   };
 
-  const getUserById = (id: string) => {
+  const getUserById = (id) => {
     return users.find(user => user.id === id);
   };
 

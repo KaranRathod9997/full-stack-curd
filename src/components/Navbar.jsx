@@ -5,7 +5,7 @@ import { Users, Plus, Home } from "lucide-react";
 const Navbar = () => {
   const location = useLocation();
   
-  const isActive = (path: string) => {
+  const isActive = (path) => {
     return location.pathname === path;
   };
 
